@@ -44,6 +44,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ATM.Application\ATM.Application.csproj">
+      <Project>{1DEEA38E-C0A1-48A4-A479-A7344D2A55F3}</Project>
+      <Name>ATM.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ATM.Interfaces\ATM.Interfaces.csproj">
       <Project>{F683A8BD-16CE-4D4F-B642-643F47550E75}</Project>
       <Name>ATM.Interfaces</Name>

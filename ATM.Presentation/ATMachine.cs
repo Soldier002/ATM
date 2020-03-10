@@ -1,10 +1,20 @@
-﻿using System;
+﻿using ATM.Application.Exceptions;
+using ATM.Interfaces.Authorization;
+using ATM.Models;
+using System;
 using System.Collections.Generic;
 
 namespace ATM
 {
     public class ATMachine : IATMachine
     {
+        private readonly ICardReader _cardReader;
+
+        public ATMachine(ICardReader cardReader)
+        {
+            _cardReader = cardReader;
+        }
+
         public string Manufacturer
         {
             get
@@ -48,7 +58,12 @@ namespace ATM
 
         public Money WithdrawMoney(int amount)
         {
-            throw new NotImplementedException();
+            if (!_cardReader.IsCardInserted())
+            {
+                throw new CardNotInsertedException();
+            }
+
+            return new Money();
         }
     }
 }
