@@ -5,16 +5,13 @@ using NUnit.Framework;
 namespace ATM.Tests.Application
 {
     [TestFixture]
-    public class CardReaderTests
+    public class CardReaderTests : AutoMockedTests<CardReader>
     {
         [Test]
         public void Given_userDidntInsertCard_When_isCardInserted_Should_returnFalse()
         {
-            // Given
-            var cardReader = new CardReader();
-
-            // When
-            var result = cardReader.IsCardInserted();
+            // Given // When
+            var result = ClassUnderTest.IsCardInserted();
 
             // Then
             Assert.IsFalse(result);
@@ -25,12 +22,10 @@ namespace ATM.Tests.Application
         {
             // Given
             var card = new Card();
-            var cardReader = new CardReader();
-
-            cardReader.Insert(card);
+            ClassUnderTest.Insert(card);
 
             // When
-            var result = cardReader.IsCardInserted();
+            var result = ClassUnderTest.IsCardInserted();
 
             // Then
             Assert.IsTrue(result);
