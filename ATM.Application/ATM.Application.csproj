@@ -48,7 +48,6 @@
     <Compile Include="Fees\FeeFactory.cs" />
     <Compile Include="Fees\FeeService.cs" />
     <Compile Include="Maintenance\ATMMaintenance.cs" />
-    <Compile Include="Maintenance\Exceptions\OutOfOrderException.cs" />
     <Compile Include="Maintenance\PrepareForOperatorAccessCommand.cs" />
     <Compile Include="MoneyOperations\Bank\WithdrawalFeeCalculator.cs" />
     <Compile Include="MoneyOperations\Exceptions\InsufficientFundsException.cs" />
