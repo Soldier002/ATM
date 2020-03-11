@@ -1,6 +1,7 @@
 ﻿using ATM.Application.Authorization;
 using ATM.Application.Authorization.Exceptions;
 using ATM.Interfaces.Application.MoneyOperations.Bank;
+using ATM.Interfaces.Data.ThisATMachine;
 using AutoFixture;
 using NUnit.Framework;
 
@@ -25,9 +26,10 @@ namespace ATM.Tests.Application.Authorization
             // Given
             var cardNumber = Fixture.Create<string>();
             GetMock<ICardService>().Setup(x => x.CardExists(cardNumber)).Returns(true);
-            ClassUnderTest.Insert(cardNumber);
+            GetMock<IThisATMachineState>().SetupProperty(x => x.InsertedCardNumber);
 
             // When
+            ClassUnderTest.Insert(cardNumber);
             var result = ClassUnderTest.IsCardInserted;
 
             // Then
@@ -40,9 +42,10 @@ namespace ATM.Tests.Application.Authorization
             // Given
             var cardNumber = Fixture.Create<string>();
             GetMock<ICardService>().Setup(x => x.CardExists(cardNumber)).Returns(true);
-            ClassUnderTest.Insert(cardNumber);
+            GetMock<IThisATMachineState>().SetupProperty(x => x.InsertedCardNumber);
 
             // When
+            ClassUnderTest.Insert(cardNumber);
             var result = ClassUnderTest.CurrentCardNumber;
 
             // Then

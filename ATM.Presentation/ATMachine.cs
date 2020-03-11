@@ -78,7 +78,12 @@ namespace ATM
 
         public void ReturnCard()
         {
-            throw new NotImplementedException();
+            if (!_cardReader.IsCardInserted)
+            {
+                throw new CardNotInsertedException();
+            }
+
+            
         }
 
         public Money WithdrawMoney(int amount)

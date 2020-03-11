@@ -1,22 +1,24 @@
 ﻿using ATM.Application.Authorization.Exceptions;
 using ATM.Interfaces.Application.Authorization;
 using ATM.Interfaces.Application.MoneyOperations.Bank;
+using ATM.Interfaces.Data.ThisATMachine;
 
 namespace ATM.Application.Authorization
 {
     public class CardReader : ICardReader
     {
-        private static string _currentCardNumber;
         private readonly ICardService _cardService;
+        private readonly IThisATMachineState _thisATMachineState;
 
-        public CardReader(ICardService cardService)
+        public CardReader(ICardService cardService, IThisATMachineState thisATMachineState)
         {
             _cardService = cardService;
+            _thisATMachineState = thisATMachineState;
         }
 
-        public string CurrentCardNumber => _currentCardNumber;
+        public string CurrentCardNumber => _thisATMachineState.InsertedCardNumber;
 
-        public bool IsCardInserted => _currentCardNumber != null;
+        public bool IsCardInserted => CurrentCardNumber != null;
 
         public void Insert(string cardNumber)
         {
@@ -25,7 +27,7 @@ namespace ATM.Application.Authorization
                 throw new CardDoesNotExistException();
             }
 
-            _currentCardNumber = cardNumber;
+            _thisATMachineState.InsertedCardNumber = cardNumber;
         }
     }
 }
