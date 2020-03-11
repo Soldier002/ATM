@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Application\Authorization\CardReaderTests.cs" />
     <Compile Include="Application\MoneyOperations\Bank\CardServiceTests.cs" />
+    <Compile Include="Application\MoneyOperations\Bank\WithdrawalFeeCalculatorTests.cs" />
     <Compile Include="Application\MoneyOperations\PaperNotes\PaperNoteDispenseAlgorithmTests.cs" />
     <Compile Include="Application\MoneyOperations\PaperNotes\PaperNoteFactoryTests.cs" />
     <Compile Include="AutoMockedTests.cs" />

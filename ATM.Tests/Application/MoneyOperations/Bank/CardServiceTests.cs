@@ -1,7 +1,9 @@
 ﻿using ATM.Application.MoneyOperations.Bank;
 using ATM.Data.Bank.Exceptions;
+using ATM.Interfaces.Application.MoneyOperations.Bank;
 using ATM.Interfaces.Data;
 using ATM.Models;
+using AutoFixture;
 using NUnit.Framework;
 
 namespace ATM.Tests.Application.MoneyOperations.Bank
@@ -13,10 +15,11 @@ namespace ATM.Tests.Application.MoneyOperations.Bank
         public void Given_amount_When_Withdraw_Then_shouldWithdrawAmountFromCard()
         {
             // Given
-            var amount = 100m;
-            var cardNumber = "1234";
+            var amount = 90m;
+            var cardNumber = Fixture.Create<string>();
             var card = new Card { Balance = 100 };
             GetMock<ICardRepository>().Setup(x => x.Get(cardNumber)).Returns(card);
+            GetMock<IWithdrawalFeeCalculator>().Setup(x => x.Calculate(amount)).Returns(10);
 
             // When
             ClassUnderTest.Withdraw(cardNumber, amount);
@@ -30,7 +33,7 @@ namespace ATM.Tests.Application.MoneyOperations.Bank
         {
             // Given
             var amount = 150m;
-            var cardNumber = "1234";
+            var cardNumber = Fixture.Create<string>();
             var card = new Card { Balance = 100 };
             GetMock<ICardRepository>().Setup(x => x.Get(cardNumber)).Returns(card);
 

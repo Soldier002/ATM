@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Application\Authorization\ICardReader.cs" />
     <Compile Include="Application\MoneyOperations\Bank\ICardService.cs" />
+    <Compile Include="Application\MoneyOperations\Bank\IWithdrawalFeeCalculator.cs" />
     <Compile Include="Application\MoneyOperations\PaperNotes\IPaperNoteDispenseAlgorithm.cs" />
     <Compile Include="Application\MoneyOperations\PaperNotes\IPaperNoteFactory.cs" />
     <Compile Include="Configuration\IConfiguration.cs" />
