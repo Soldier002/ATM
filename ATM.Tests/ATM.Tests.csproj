@@ -79,7 +79,7 @@
     <Compile Include="Application\MoneyOperations\PaperNotes\PaperNoteDispenseAlgorithmTests.cs" />
     <Compile Include="Application\MoneyOperations\PaperNotes\PaperNoteFactoryTests.cs" />
     <Compile Include="AutoMockedTests.cs" />
-    <Compile Include="Presentation\ATMMachineTests.cs" />
+    <Compile Include="Presentation\ATMachineTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

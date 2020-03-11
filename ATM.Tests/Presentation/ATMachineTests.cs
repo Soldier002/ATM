@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace ATM.Tests.Presentation
 {
     [TestFixture]
-    public class ATMMachineTests : AutoMockedTests<ATMachine>
+    public class ATMachineTests : AutoMockedTests<ATMachine>
     {
         [Test]
         public void Given_cardNotInserted_When_WithdrawMoney_Then_shouldThrowException()
@@ -121,6 +121,33 @@ namespace ATM.Tests.Presentation
 
             // Then
             cardReaderMock.Verify(x => x.Remove(), Times.Once);
+        }
+
+        [Test]
+        public void Given_cardNotInserted_When_GetCardBalance_Then_shouldThrowException()
+        {
+            // Given
+            GetMock<ICardReader>().Setup(x => x.IsCardInserted).Returns(false);
+
+            // When // Then
+            Assert.Throws<CardNotInsertedException>(() => ClassUnderTest.GetCardBalance());
+        }
+
+        [Test]
+        public void Given_cardInserted_When_GetCardBalance_Then_shouldReturnCardBalance()
+        {
+            // Given
+            var cardNumber = Fixture.Create<string>();
+            var cardBalance = Fixture.Create<decimal>();
+            GetMock<ICardReader>().Setup(x => x.IsCardInserted).Returns(true);
+            GetMock<ICardReader>().Setup(x => x.InsertedCardNumber).Returns(cardNumber);
+            GetMock<ICardService>().Setup(x => x.GetCardBalance(cardNumber)).Returns(cardBalance);
+
+            // When
+            var result = ClassUnderTest.GetCardBalance();
+
+            // Then
+            Assert.AreEqual(cardBalance, result);
         }
     }
 }

@@ -42,7 +42,14 @@ namespace ATM
 
         public decimal GetCardBalance()
         {
-            throw new NotImplementedException();
+            if (!_cardReader.IsCardInserted)
+            {
+                throw new CardNotInsertedException();
+            }
+
+            var cardBalance = _cardService.GetCardBalance(_cardReader.InsertedCardNumber);
+
+            return cardBalance;
         }
 
         public void InsertCard(string cardNumber)
