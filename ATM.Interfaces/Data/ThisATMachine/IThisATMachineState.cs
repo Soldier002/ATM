@@ -1,6 +1,6 @@
 ﻿using ATM.Models;
 
-namespace ATM.Interfaces.Data
+namespace ATM.Interfaces.Data.ThisATMachine
 {
     public interface IThisATMachineState
     {

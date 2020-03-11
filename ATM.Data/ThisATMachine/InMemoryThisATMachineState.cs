@@ -1,4 +1,5 @@
 ﻿using ATM.Interfaces.Data;
+using ATM.Interfaces.Data.ThisATMachine;
 using ATM.Models;
 
 namespace ATM.Data.ThisATMachine

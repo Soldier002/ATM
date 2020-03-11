@@ -3,6 +3,7 @@ using ATM.Interfaces.Application.Authorization;
 using ATM.Interfaces.Application.MoneyOperations.Bank;
 using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
 using ATM.Interfaces.Data;
+using ATM.Interfaces.Data.ThisATMachine;
 using ATM.Models;
 using AutoFixture;
 using Moq;

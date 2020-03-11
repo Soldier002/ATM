@@ -2,6 +2,7 @@
 using ATM.Data.Bank.Exceptions;
 using ATM.Interfaces.Application.MoneyOperations.Bank;
 using ATM.Interfaces.Data;
+using ATM.Interfaces.Data.Bank;
 using ATM.Models;
 using AutoFixture;
 using NUnit.Framework;

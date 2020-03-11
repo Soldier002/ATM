@@ -1,6 +1,7 @@
 ﻿using ATM.Interfaces.Application.MoneyOperations.Bank;
 using ATM.Interfaces.Data;
 using ATM.Data.Bank.Exceptions;
+using ATM.Interfaces.Data.Bank;
 
 namespace ATM.Application.MoneyOperations.Bank
 {

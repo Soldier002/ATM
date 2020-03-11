@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ATM.Models;
+using ATM.Interfaces.Data.Bank;
 
 namespace ATM.Data.Bank
 {
