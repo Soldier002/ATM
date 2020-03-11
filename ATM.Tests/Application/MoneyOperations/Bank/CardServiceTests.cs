@@ -48,5 +48,20 @@ namespace ATM.Tests.Application.MoneyOperations.Bank
             Assert.Throws<InsufficientFundsException>(() => ClassUnderTest.Withdraw(cardNumber, amount));
             Assert.AreEqual(100, card.Balance);
         }
+
+        [Test]
+        public void Given_cardNumber_When_GetCardBalance_Then_shouldReturnBalanceOfTheCard()
+        {
+            // Given
+            var cardNumber = Fixture.Create<string>();
+            var card = Fixture.Create<Card>();
+            GetMock<ICardRepository>().Setup(x => x.Get(cardNumber)).Returns(card);
+
+            // When
+            var result = ClassUnderTest.GetCardBalance(cardNumber);
+
+            // Then
+            Assert.AreEqual(card.Balance, result);
+        }
     }
 }

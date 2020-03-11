@@ -35,5 +35,12 @@ namespace ATM.Application.MoneyOperations.Bank
             var fee = _feeFactory.Create(cardNumber, feeAmount);
             _feeRepository.Add(fee);
         }
+
+        public decimal GetCardBalance(string cardNumber)
+        {
+            var card = _cardRepository.Get(cardNumber);
+
+            return card.Balance;
+        }
     }
 }

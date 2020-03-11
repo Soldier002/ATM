@@ -3,5 +3,7 @@
     public interface ICardService
     {
         void Withdraw(string cardNumber, decimal amount);
+
+        decimal GetCardBalance(string cardNumber);
     }
 }

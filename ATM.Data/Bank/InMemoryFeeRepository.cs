@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ATM.Models;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace ATM.Data.Bank
 {
@@ -13,6 +14,13 @@ namespace ATM.Data.Bank
         public void Add(Fee fee)
         {
             _fees.Add(fee);
+        }
+
+        public IEnumerable<Fee> GetAll(string cardNumber)
+        {
+            var fees = _fees.Where(x => x.CardNumber == cardNumber);
+
+            return fees;
         }
     }
 }

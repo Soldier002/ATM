@@ -44,6 +44,7 @@
     <Compile Include="Configuration\InMemoryConfiguration.cs" />
     <Compile Include="Authorization\Exceptions\CardNotInsertedException.cs" />
     <Compile Include="Fees\FeeFactory.cs" />
+    <Compile Include="Fees\FeeService.cs" />
     <Compile Include="MoneyOperations\Bank\WithdrawalFeeCalculator.cs" />
     <Compile Include="MoneyOperations\Exceptions\InsufficientFundsException.cs" />
     <Compile Include="MoneyOperations\Exceptions\NecessaryPaperNotesNotAvailableException.cs" />

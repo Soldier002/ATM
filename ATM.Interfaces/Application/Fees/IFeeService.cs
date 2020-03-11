@@ -1,12 +1,10 @@
 ﻿using ATM.Models;
 using System.Collections.Generic;
 
-namespace ATM.Interfaces.Data.Bank
+namespace ATM.Interfaces.Application.Fees
 {
-    public interface IFeeRepository
+    public interface IFeeService
     {
-        void Add(Fee fee);
-
         IEnumerable<Fee> GetAll(string cardNumber);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using ATM.Application.Authorization.Exceptions;
 using ATM.Interfaces.Application.Authorization;
+using ATM.Interfaces.Application.Fees;
 using ATM.Interfaces.Application.MoneyOperations.Bank;
 using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
 using ATM.Interfaces.Data.ThisATMachine;
@@ -13,16 +14,18 @@ namespace ATM
     {
         private readonly ICardReader _cardReader;
         private readonly ICardService _cardService;
+        private readonly IFeeService _feeService;
         private readonly IPaperNoteDispenseAlgorithm _paperNoteDispenseAlgorithm;
         private readonly IThisATMachineState _thisATMachineState;
 
-        public ATMachine(ICardReader cardReader, ICardService cardService, IPaperNoteDispenseAlgorithm paperNoteDispenseAlgorithm, IThisATMachineState thisATMachineState
-            )
+        public ATMachine(ICardReader cardReader, ICardService cardService, IPaperNoteDispenseAlgorithm paperNoteDispenseAlgorithm, 
+            IThisATMachineState thisATMachineState, IFeeService feeService)
         {
             _cardReader = cardReader;
             _cardService = cardService;
             _paperNoteDispenseAlgorithm = paperNoteDispenseAlgorithm;
             _thisATMachineState = thisATMachineState;
+            _feeService = feeService;
         }
 
         public string Manufacturer
@@ -58,7 +61,14 @@ namespace ATM
 
         public IEnumerable<Fee> RetrieveChargedFees()
         {
-            throw new NotImplementedException();
+            if (!_cardReader.IsCardInserted())
+            {
+                throw new CardNotInsertedException();
+            }
+
+            var fees = _feeService.GetAll(_cardReader.CurrentCardNumber);
+
+            return fees;
         }
 
         public void ReturnCard()
