@@ -1,10 +1,5 @@
 ﻿using ATM.Interfaces.Application.MoneyOperations.Bank;
 using ATM.Interfaces.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ATM.Application.MoneyOperations.Bank
 {

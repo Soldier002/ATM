@@ -1,5 +1,4 @@
-﻿using System;
-using ATM.Interfaces.Configuration;
+﻿using ATM.Interfaces.Configuration;
 
 namespace ATM.Application.Configuration
 {

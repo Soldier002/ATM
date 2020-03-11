@@ -41,12 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Authorization\ICardReader.cs" />
+    <Compile Include="Application\Fees\IFeeFactory.cs" />
     <Compile Include="Application\MoneyOperations\Bank\ICardService.cs" />
     <Compile Include="Application\MoneyOperations\Bank\IWithdrawalFeeCalculator.cs" />
     <Compile Include="Application\MoneyOperations\PaperNotes\IPaperNoteDispenseAlgorithm.cs" />
     <Compile Include="Application\MoneyOperations\PaperNotes\IPaperNoteFactory.cs" />
+    <Compile Include="Application\Utility\IDateTimeFacade.cs" />
     <Compile Include="Configuration\IConfiguration.cs" />
     <Compile Include="Data\Bank\ICardRepository.cs" />
+    <Compile Include="Data\Bank\IFeeRepository.cs" />
     <Compile Include="Data\ThisATMachine\IThisATMachineState.cs" />
     <Compile Include="Presentation\IATMachine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,6 +60,7 @@
       <Name>ATM.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

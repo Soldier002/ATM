@@ -17,7 +17,9 @@ namespace ATM.Tests
                     return _fixture;
                 }
 
-                _fixture = new Fixture().Customize(new AutoMoqCustomization());
+                _fixture = new Fixture()
+                    .Customize(new AutoMoqCustomization())
+                    .Customize(new SupportMutableValueTypesCustomization());
                 return _fixture;
             }
         }

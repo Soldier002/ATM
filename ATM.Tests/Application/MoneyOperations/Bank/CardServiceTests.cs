@@ -1,10 +1,11 @@
 ﻿using ATM.Application.MoneyOperations.Bank;
 using ATM.Data.Bank.Exceptions;
+using ATM.Interfaces.Application.Fees;
 using ATM.Interfaces.Application.MoneyOperations.Bank;
-using ATM.Interfaces.Data;
 using ATM.Interfaces.Data.Bank;
 using ATM.Models;
 using AutoFixture;
+using Moq;
 using NUnit.Framework;
 
 namespace ATM.Tests.Application.MoneyOperations.Bank
@@ -13,20 +14,25 @@ namespace ATM.Tests.Application.MoneyOperations.Bank
     public class CardServiceTests : AutoMockedTests<CardService>
     {
         [Test]
-        public void Given_amount_When_Withdraw_Then_shouldWithdrawAmountFromCard()
+        public void Given_amount_When_Withdraw_Then_shouldWithdrawAmountFromCardAndSaveFee()
         {
             // Given
             var amount = 90m;
+            var feeAmount = 10m;
             var cardNumber = Fixture.Create<string>();
+            var fee = Fixture.Create<Fee>();
             var card = new Card { Balance = 100 };
             GetMock<ICardRepository>().Setup(x => x.Get(cardNumber)).Returns(card);
-            GetMock<IWithdrawalFeeCalculator>().Setup(x => x.Calculate(amount)).Returns(10);
+            GetMock<IWithdrawalFeeCalculator>().Setup(x => x.Calculate(amount)).Returns(feeAmount);
+            GetMock<IFeeFactory>().Setup(x => x.Create(cardNumber, feeAmount)).Returns(fee);
+            var feeRepositoryMock = GetMock<IFeeRepository>();
 
             // When
             ClassUnderTest.Withdraw(cardNumber, amount);
 
             // Then
             Assert.AreEqual(card.Balance, 0);
+            feeRepositoryMock.Verify(x => x.Add(fee), Times.Once);
         }
 
         [Test]

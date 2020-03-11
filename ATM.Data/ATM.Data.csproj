@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bank\InMemoryCardRepository.cs" />
+    <Compile Include="Bank\InMemoryFeeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThisATMachine\InMemoryThisATMachineState.cs" />
   </ItemGroup>
