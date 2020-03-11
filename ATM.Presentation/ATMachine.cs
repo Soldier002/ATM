@@ -1,5 +1,6 @@
 ﻿using ATM.Application.Exceptions;
-using ATM.Interfaces.Authorization;
+using ATM.Interfaces.Application.Authorization;
+using ATM.Interfaces.Application.MoneyOperations;
 using ATM.Models;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,12 @@ namespace ATM
     public class ATMachine : IATMachine
     {
         private readonly ICardReader _cardReader;
+        private readonly IPaperNoteDispenseAlgorithm _paperNoteDispenseAlgorithm;
 
-        public ATMachine(ICardReader cardReader)
+        public ATMachine(ICardReader cardReader, IPaperNoteDispenseAlgorithm paperNoteDispenseAlgorithm)
         {
             _cardReader = cardReader;
+            _paperNoteDispenseAlgorithm = paperNoteDispenseAlgorithm;
         }
 
         public string Manufacturer

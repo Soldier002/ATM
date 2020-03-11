@@ -41,7 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authorization\CardReader.cs" />
+    <Compile Include="Configuration\InMemoryConfiguration.cs" />
     <Compile Include="Exceptions\CardNotInsertedException.cs" />
+    <Compile Include="Exceptions\NecessaryPaperNotesNotAvailableException.cs" />
+    <Compile Include="Exceptions\NotEnoughMoneyInAtmException.cs" />
+    <Compile Include="Exceptions\PaperNoteFaceValueNotAvailableException.cs" />
+    <Compile Include="MoneyOperations\PaperNotes\PaperNoteDispenseAlgorithm.cs" />
+    <Compile Include="MoneyOperations\PaperNotes\PaperNoteFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +60,7 @@
       <Name>ATM.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

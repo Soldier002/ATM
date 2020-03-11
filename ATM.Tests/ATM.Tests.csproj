@@ -72,6 +72,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\CardReaderTests.cs" />
+    <Compile Include="Application\MoneyOperations\PaperNoteDispenseAlgorithmTests.cs" />
+    <Compile Include="Application\MoneyOperations\PaperNoteFactoryTests.cs" />
     <Compile Include="AutoMockedTests.cs" />
     <Compile Include="Presentation\ATMMachineTests.cs" />
   </ItemGroup>

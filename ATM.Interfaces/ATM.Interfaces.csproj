@@ -40,7 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authorization\ICardReader.cs" />
+    <Compile Include="Application\Authorization\ICardReader.cs" />
+    <Compile Include="Application\MoneyOperations\IPaperNoteDispenseAlgorithm.cs" />
+    <Compile Include="Application\MoneyOperations\IPaperNoteFactory.cs" />
+    <Compile Include="Configuration\IConfiguration.cs" />
     <Compile Include="Presentation\IATMachine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

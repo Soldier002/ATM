@@ -1,4 +1,4 @@
-﻿namespace ATM.Interfaces.Authorization
+﻿namespace ATM.Interfaces.Application.Authorization
 {
     public interface ICardReader
     {

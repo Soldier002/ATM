@@ -1,7 +1,6 @@
 ﻿using ATM.Application.Exceptions;
-using ATM.Interfaces.Authorization;
+using ATM.Interfaces.Application.Authorization;
 using AutoFixture;
-using AutoFixture.AutoMoq;
 using Moq;
 using NUnit.Framework;
 
@@ -11,7 +10,7 @@ namespace ATM.Tests.Presentation
     public class ATMMachineTests : AutoMockedTests<ATMachine>
     {
         [Test]
-        public void Given_cardNotInserted_When_WithdrawMoney_Then_shouldThrowCardNotInsertedException()
+        public void Given_cardNotInserted_When_WithdrawMoney_Then_shouldThrowException()
         {
             // Given 
             var mockCardReader = Fixture.Freeze<Mock<ICardReader>>();
@@ -22,7 +21,7 @@ namespace ATM.Tests.Presentation
         }
 
         [Test]
-        public void Given_cardInserted_When_WithdrawMoney_Then_shouldThrowCardNotInsertedException()
+        public void Given_cardInserted_When_WithdrawMoney_Then_shouldThrowException()
         {
             // Given 
             var mockCardReader = Fixture.Freeze<Mock<ICardReader>>();

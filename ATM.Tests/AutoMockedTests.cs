@@ -1,17 +1,12 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Moq;
 
 namespace ATM.Tests
 {
     public class AutoMockedTests<T>
     {
         private IFixture _fixture;
-        private T _classUnderTest;
 
         protected IFixture Fixture
         {
@@ -27,18 +22,9 @@ namespace ATM.Tests
             }
         }
 
-        protected T ClassUnderTest
-        {
-            get
-            {
-                if (_classUnderTest != null)
-                {
-                    return _classUnderTest;
-                }
+        protected T ClassUnderTest => Fixture.Create<T>();
 
-                _classUnderTest = Fixture.Create<T>();
-                return _classUnderTest;
-            }
-        }
+        protected Mock<TMock> GetMock<TMock>() where TMock : class 
+            => Fixture.Freeze<Mock<TMock>>();
     }
 }

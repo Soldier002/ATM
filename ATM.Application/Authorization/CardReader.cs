@@ -1,6 +1,5 @@
-﻿using ATM.Interfaces.Authorization;
+﻿using ATM.Interfaces.Application.Authorization;
 using ATM.Models;
-using System;
 
 namespace ATM.Application.Authorization
 {
