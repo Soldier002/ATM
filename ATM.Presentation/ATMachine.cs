@@ -3,7 +3,6 @@ using ATM.Interfaces.Application.Authorization;
 using ATM.Interfaces.Application.Fees;
 using ATM.Interfaces.Application.MoneyOperations.Bank;
 using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
-using ATM.Interfaces.Data.ThisATMachine;
 using ATM.Models;
 using System;
 using System.Collections.Generic;
@@ -16,15 +15,12 @@ namespace ATM
         private readonly ICardService _cardService;
         private readonly IFeeService _feeService;
         private readonly IPaperNoteDispenseAlgorithm _paperNoteDispenseAlgorithm;
-        private readonly IThisATMachineState _thisATMachineState;
 
-        public ATMachine(ICardReader cardReader, ICardService cardService, IPaperNoteDispenseAlgorithm paperNoteDispenseAlgorithm, 
-            IThisATMachineState thisATMachineState, IFeeService feeService)
+        public ATMachine(ICardReader cardReader, ICardService cardService, IPaperNoteDispenseAlgorithm paperNoteDispenseAlgorithm, IFeeService feeService)
         {
             _cardReader = cardReader;
             _cardService = cardService;
             _paperNoteDispenseAlgorithm = paperNoteDispenseAlgorithm;
-            _thisATMachineState = thisATMachineState;
             _feeService = feeService;
         }
 
@@ -93,7 +89,7 @@ namespace ATM
                 throw new CardNotInsertedException();
             }
             
-            var withdrawnMoney = _paperNoteDispenseAlgorithm.Dispense(amount, _thisATMachineState.AvailableMoney);
+            var withdrawnMoney = _paperNoteDispenseAlgorithm.Dispense(amount);
             _cardService.Withdraw(_cardReader.InsertedCardNumber, amount);
 
             return withdrawnMoney;

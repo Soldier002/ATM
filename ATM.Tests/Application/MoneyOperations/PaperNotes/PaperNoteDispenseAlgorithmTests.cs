@@ -1,5 +1,6 @@
 ﻿using ATM.Application.MoneyOperations.Exceptions;
 using ATM.Application.MoneyOperations.PaperNotes;
+using ATM.Interfaces.Data.ThisATMachine;
 using ATM.Models;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -25,9 +26,10 @@ namespace ATM.Tests.Application.MoneyOperations.PaperNotes
                 }
             };
             var amountToDispense = 60;
+            GetMock<IThisATMachineState>().Setup(x => x.AvailableMoney).Returns(money);
 
             // When
-            var result = ClassUnderTest.Dispense(amountToDispense, money);
+            var result = ClassUnderTest.Dispense(amountToDispense);
 
             // Then
             Assert.AreEqual(60, result.Amount);
@@ -53,9 +55,10 @@ namespace ATM.Tests.Application.MoneyOperations.PaperNotes
                 }
             };
             var amountToDispense = 120;
+            GetMock<IThisATMachineState>().Setup(x => x.AvailableMoney).Returns(money);
 
             // When
-            var result = ClassUnderTest.Dispense(amountToDispense, money);
+            var result = ClassUnderTest.Dispense(amountToDispense);
 
             // Then
             Assert.AreEqual(120, result.Amount);
@@ -70,9 +73,10 @@ namespace ATM.Tests.Application.MoneyOperations.PaperNotes
             // Given
             var moneyInAtm = new Money { Amount = 10 };
             var amountToDispense = 100;
+            GetMock<IThisATMachineState>().Setup(x => x.AvailableMoney).Returns(moneyInAtm);
 
             // When // Then
-            Assert.Throws<NotEnoughMoneyInAtmException>(() => ClassUnderTest.Dispense(amountToDispense, moneyInAtm));
+            Assert.Throws<NotEnoughMoneyInAtmException>(() => ClassUnderTest.Dispense(amountToDispense));
         }
 
         [Test]
@@ -90,9 +94,10 @@ namespace ATM.Tests.Application.MoneyOperations.PaperNotes
                 }
             };
             var amountToDispense = 55;
+            GetMock<IThisATMachineState>().Setup(x => x.AvailableMoney).Returns(moneyInAtm);
 
             // When // Then
-            Assert.Throws<NecessaryPaperNotesNotAvailableException>(() => ClassUnderTest.Dispense(amountToDispense, moneyInAtm));
+            Assert.Throws<NecessaryPaperNotesNotAvailableException>(() => ClassUnderTest.Dispense(amountToDispense));
         }
         
     }

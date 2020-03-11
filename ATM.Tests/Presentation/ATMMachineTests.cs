@@ -3,7 +3,6 @@ using ATM.Interfaces.Application.Authorization;
 using ATM.Interfaces.Application.Fees;
 using ATM.Interfaces.Application.MoneyOperations.Bank;
 using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
-using ATM.Interfaces.Data.ThisATMachine;
 using ATM.Models;
 using AutoFixture;
 using Moq;
@@ -36,8 +35,7 @@ namespace ATM.Tests.Presentation
             var cardNumber = Fixture.Create<string>();
 
             GetMock<ICardReader>().Setup(x => x.IsCardInserted).Returns(true);
-            GetMock<IThisATMachineState>().Setup(x => x.AvailableMoney).Returns(availableMoney);
-            GetMock<IPaperNoteDispenseAlgorithm>().Setup(x => x.Dispense(amountToDispense, availableMoney)).Returns(withdrawnMoney);
+            GetMock<IPaperNoteDispenseAlgorithm>().Setup(x => x.Dispense(amountToDispense)).Returns(withdrawnMoney);
             GetMock<ICardReader>().Setup(x => x.InsertedCardNumber).Returns(cardNumber);
             var mockCardService = GetMock<ICardService>();
 

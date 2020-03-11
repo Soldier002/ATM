@@ -3,13 +3,23 @@ using System.Linq;
 using ATM.Models;
 using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
 using ATM.Application.MoneyOperations.Exceptions;
+using ATM.Interfaces.Data.ThisATMachine;
 
 namespace ATM.Application.MoneyOperations.PaperNotes
 {
     public class PaperNoteDispenseAlgorithm : IPaperNoteDispenseAlgorithm
     {
-        public Money Dispense(int amountToDispense, Money moneyInAtm)
+        private int[] resultVariation;
+        private readonly IThisATMachineState _thisATMachineState;
+
+        public PaperNoteDispenseAlgorithm(IThisATMachineState thisATMachineState)
         {
+            _thisATMachineState = thisATMachineState;
+        }
+
+        public Money Dispense(int amountToDispense)
+        {
+            var moneyInAtm = _thisATMachineState.AvailableMoney;
             if (amountToDispense > moneyInAtm.Amount)
             {
                 throw new NotEnoughMoneyInAtmException();
@@ -40,8 +50,6 @@ namespace ATM.Application.MoneyOperations.PaperNotes
 
             return money;
         }
-
-        private int[] resultVariation;
 
         private void RunThroughVariations(int[] variation, int position, List<KeyValuePair<PaperNote, int>> orderedPaperNoteAmounts, int amountToDispense)
         {
