@@ -1,9 +1,9 @@
-﻿using ATM.Application.Exceptions;
+﻿using ATM.Application.MoneyOperations.Exceptions;
 using ATM.Application.MoneyOperations.PaperNotes;
 using ATM.Interfaces.Configuration;
 using NUnit.Framework;
 
-namespace ATM.Tests.Application.MoneyOperations
+namespace ATM.Tests.Application.MoneyOperations.PaperNotes
 {
     [TestFixture]
     public class PaperNoteFactoryTests : AutoMockedTests<PaperNoteFactory>

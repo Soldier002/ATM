@@ -1,20 +1,21 @@
 ﻿using ATM.Interfaces.Application.Authorization;
-using ATM.Models;
 
 namespace ATM.Application.Authorization
 {
     public class CardReader : ICardReader
     {
-        private static Card _currentCard;
+        private static string _currentCardNumber;
+
+        public string CurrentCardNumber => _currentCardNumber;
 
         public bool IsCardInserted()
         {
-            return _currentCard != null;
+            return _currentCardNumber != null;
         }
 
-        public void Insert(Card card)
+        public void Insert(string cardNumber)
         {
-            _currentCard = card;
+            _currentCardNumber = cardNumber;
         }
     }
 }

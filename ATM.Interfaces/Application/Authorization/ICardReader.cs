@@ -3,5 +3,7 @@
     public interface ICardReader
     {
         bool IsCardInserted();
+
+        string CurrentCardNumber { get; }
     }
 }

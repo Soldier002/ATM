@@ -1,5 +1,5 @@
 ﻿using ATM.Application.Authorization;
-using ATM.Models;
+using AutoFixture;
 using NUnit.Framework;
 
 namespace ATM.Tests.Application.Authorization
@@ -21,14 +21,28 @@ namespace ATM.Tests.Application.Authorization
         public void Given_userInsertedCard_When_isCardInserted_Should_returnTrue()
         {
             // Given
-            var card = new Card();
-            ClassUnderTest.Insert(card);
+            var cardNumber = Fixture.Create<string>();
+            ClassUnderTest.Insert(cardNumber);
 
             // When
             var result = ClassUnderTest.IsCardInserted();
 
             // Then
             Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void Given_userInsertedCard_When_GetCurrentCardNumber_Should_returnSameNumber()
+        {
+            // Given
+            var cardNumber = Fixture.Create<string>();
+            ClassUnderTest.Insert(cardNumber);
+
+            // When
+            var result = ClassUnderTest.CurrentCardNumber;
+
+            // Then
+            Assert.AreEqual(cardNumber, result);
         }
     }
 }

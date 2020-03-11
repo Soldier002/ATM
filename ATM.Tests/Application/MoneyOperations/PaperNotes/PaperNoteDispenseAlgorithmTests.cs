@@ -1,10 +1,10 @@
-﻿using ATM.Application.Exceptions;
+﻿using ATM.Application.MoneyOperations.Exceptions;
 using ATM.Application.MoneyOperations.PaperNotes;
 using ATM.Models;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace ATM.Tests.Application.MoneyOperations
+namespace ATM.Tests.Application.MoneyOperations.PaperNotes
 {
     [TestFixture]
     public class PaperNoteDispenseAlgorithmTests : AutoMockedTests<PaperNoteDispenseAlgorithm>

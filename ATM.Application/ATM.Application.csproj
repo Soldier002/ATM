@@ -42,10 +42,12 @@
   <ItemGroup>
     <Compile Include="Authorization\CardReader.cs" />
     <Compile Include="Configuration\InMemoryConfiguration.cs" />
-    <Compile Include="Exceptions\CardNotInsertedException.cs" />
-    <Compile Include="Exceptions\NecessaryPaperNotesNotAvailableException.cs" />
-    <Compile Include="Exceptions\NotEnoughMoneyInAtmException.cs" />
-    <Compile Include="Exceptions\PaperNoteFaceValueNotAvailableException.cs" />
+    <Compile Include="Authorization\Exceptions\CardNotInsertedException.cs" />
+    <Compile Include="MoneyOperations\Exceptions\InsufficientFundsException.cs" />
+    <Compile Include="MoneyOperations\Exceptions\NecessaryPaperNotesNotAvailableException.cs" />
+    <Compile Include="MoneyOperations\Exceptions\NotEnoughMoneyInAtmException.cs" />
+    <Compile Include="MoneyOperations\Exceptions\PaperNoteFaceValueNotAvailableException.cs" />
+    <Compile Include="MoneyOperations\Bank\CardService.cs" />
     <Compile Include="MoneyOperations\PaperNotes\PaperNoteDispenseAlgorithm.cs" />
     <Compile Include="MoneyOperations\PaperNotes\PaperNoteFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -41,9 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Authorization\ICardReader.cs" />
-    <Compile Include="Application\MoneyOperations\IPaperNoteDispenseAlgorithm.cs" />
-    <Compile Include="Application\MoneyOperations\IPaperNoteFactory.cs" />
+    <Compile Include="Application\MoneyOperations\Bank\ICardService.cs" />
+    <Compile Include="Application\MoneyOperations\PaperNotes\IPaperNoteDispenseAlgorithm.cs" />
+    <Compile Include="Application\MoneyOperations\PaperNotes\IPaperNoteFactory.cs" />
     <Compile Include="Configuration\IConfiguration.cs" />
+    <Compile Include="Data\ICardRepository.cs" />
     <Compile Include="Data\IThisATMachineState.cs" />
     <Compile Include="Presentation\IATMachine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

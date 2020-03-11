@@ -1,8 +1,8 @@
-﻿using ATM.Interfaces.Application.MoneyOperations;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using ATM.Models;
-using ATM.Application.Exceptions;
+using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
+using ATM.Application.MoneyOperations.Exceptions;
 
 namespace ATM.Application.MoneyOperations.PaperNotes
 {
