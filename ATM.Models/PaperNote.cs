@@ -1,6 +1,6 @@
 ﻿namespace ATM.Models
 {
-    public class PaperNote
+    public struct PaperNote
     {
         public PaperNote(int faceValue)
         {
@@ -8,5 +8,18 @@
         }
 
         public int FaceValue { get; }
+
+        public override int GetHashCode()
+        {
+            return FaceValue;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var paperNote = (PaperNote)obj;
+            var result = paperNote.FaceValue == FaceValue;
+
+            return result;
+        }
     }
 }

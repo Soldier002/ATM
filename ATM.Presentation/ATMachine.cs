@@ -3,6 +3,7 @@ using ATM.Interfaces.Application.Authorization;
 using ATM.Interfaces.Application.Fees;
 using ATM.Interfaces.Application.MoneyOperations.Bank;
 using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
+using ATM.Interfaces.Maintenance;
 using ATM.Models;
 using System;
 using System.Collections.Generic;
@@ -11,17 +12,20 @@ namespace ATM
 {
     public class ATMachine : IATMachine
     {
+        private readonly IATMMaintenance _atmMaintenance;
         private readonly ICardReader _cardReader;
         private readonly ICardService _cardService;
         private readonly IFeeService _feeService;
         private readonly IPaperNoteDispenseAlgorithm _paperNoteDispenseAlgorithm;
 
-        public ATMachine(ICardReader cardReader, ICardService cardService, IPaperNoteDispenseAlgorithm paperNoteDispenseAlgorithm, IFeeService feeService)
+        public ATMachine(ICardReader cardReader, ICardService cardService, IPaperNoteDispenseAlgorithm paperNoteDispenseAlgorithm, 
+            IFeeService feeService, IATMMaintenance atmMaintenance)
         {
             _cardReader = cardReader;
             _cardService = cardService;
             _paperNoteDispenseAlgorithm = paperNoteDispenseAlgorithm;
             _feeService = feeService;
+            _atmMaintenance = atmMaintenance;
         }
 
         public string Manufacturer
@@ -64,7 +68,12 @@ namespace ATM
 
         public void LoadMoney(Money money)
         {
-            throw new NotImplementedException();
+            if (_cardReader.IsCardInserted)
+            {
+                throw new CardAlreadyInsertedException();
+            }
+
+            _atmMaintenance.LoadMoney(money);
         }
 
         public IEnumerable<Fee> RetrieveChargedFees()

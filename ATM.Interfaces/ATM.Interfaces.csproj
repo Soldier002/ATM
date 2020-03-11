@@ -46,12 +46,14 @@
     <Compile Include="Application\MoneyOperations\Bank\ICardService.cs" />
     <Compile Include="Application\MoneyOperations\Bank\IWithdrawalFeeCalculator.cs" />
     <Compile Include="Application\MoneyOperations\PaperNotes\IPaperNoteDispenseAlgorithm.cs" />
-    <Compile Include="Application\MoneyOperations\PaperNotes\IPaperNoteFactory.cs" />
+    <Compile Include="Application\MoneyOperations\PaperNotes\IPaperNoteValidator.cs" />
     <Compile Include="Application\Utility\IDateTimeFacade.cs" />
     <Compile Include="Configuration\IConfiguration.cs" />
     <Compile Include="Data\Bank\ICardRepository.cs" />
     <Compile Include="Data\Bank\IFeeRepository.cs" />
     <Compile Include="Data\ThisATMachine\IThisATMachineState.cs" />
+    <Compile Include="Maintenance\IATMMaintenance.cs" />
+    <Compile Include="Maintenance\IPrepareForOperatorAccessCommand.cs" />
     <Compile Include="Presentation\IATMachine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

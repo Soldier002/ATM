@@ -74,11 +74,13 @@
     <Compile Include="Application\Authorization\CardReaderTests.cs" />
     <Compile Include="Application\Fees\FeeFactoryTests.cs" />
     <Compile Include="Application\Fees\FeeServiceTests.cs" />
+    <Compile Include="Application\Maintenance\ATMMaintenanceTests.cs" />
     <Compile Include="Application\MoneyOperations\Bank\CardServiceTests.cs" />
     <Compile Include="Application\MoneyOperations\Bank\WithdrawalFeeCalculatorTests.cs" />
     <Compile Include="Application\MoneyOperations\PaperNotes\PaperNoteDispenseAlgorithmTests.cs" />
-    <Compile Include="Application\MoneyOperations\PaperNotes\PaperNoteFactoryTests.cs" />
+    <Compile Include="Application\MoneyOperations\PaperNotes\PaperNoteValidatorTests.cs" />
     <Compile Include="AutoMockedTests.cs" />
+    <Compile Include="Models\PaperNoteTests.cs" />
     <Compile Include="Presentation\ATMachineTests.cs" />
   </ItemGroup>
   <ItemGroup>

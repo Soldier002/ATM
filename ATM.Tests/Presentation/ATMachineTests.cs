@@ -3,6 +3,7 @@ using ATM.Interfaces.Application.Authorization;
 using ATM.Interfaces.Application.Fees;
 using ATM.Interfaces.Application.MoneyOperations.Bank;
 using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
+using ATM.Interfaces.Maintenance;
 using ATM.Models;
 using AutoFixture;
 using Moq;
@@ -148,6 +149,31 @@ namespace ATM.Tests.Presentation
 
             // Then
             Assert.AreEqual(cardBalance, result);
+        }
+
+        [Test]
+        public void Given_cardInserted_When_LoadMoney_Then_shouldThrowException()
+        {
+            // Given
+            var money = Fixture.Create<Money>();
+            GetMock<ICardReader>().Setup(x => x.IsCardInserted).Returns(true);
+
+            // When // Then
+            Assert.Throws<CardAlreadyInsertedException>(() => ClassUnderTest.LoadMoney(money));
+        }
+
+        [Test]
+        public void Given_money_When_LoadMoney_Then_shouldLoadMoney()
+        {
+            // Given
+            var money = Fixture.Create<Money>();
+            var mockAtmMaintenance = GetMock<IATMMaintenance>();
+
+            // When
+            ClassUnderTest.LoadMoney(money);
+
+            // Then
+            mockAtmMaintenance.Verify(x => x.LoadMoney(money), Times.Once);
         }
     }
 }
