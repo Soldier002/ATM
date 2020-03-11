@@ -1,4 +1,6 @@
 ﻿using ATM.Application.Authorization;
+using ATM.Application.Authorization.Exceptions;
+using ATM.Interfaces.Application.MoneyOperations.Bank;
 using AutoFixture;
 using NUnit.Framework;
 
@@ -8,34 +10,36 @@ namespace ATM.Tests.Application.Authorization
     public class CardReaderTests : AutoMockedTests<CardReader>
     {
         [Test]
-        public void Given_userDidntInsertCard_When_isCardInserted_Should_returnFalse()
+        public void Given_userDidntInsertCard_When_IsCardInserted_Then_shouldReturnFalse()
         {
             // Given // When
-            var result = ClassUnderTest.IsCardInserted();
+            var result = ClassUnderTest.IsCardInserted;
 
             // Then
             Assert.IsFalse(result);
         }
 
         [Test]
-        public void Given_userInsertedCard_When_isCardInserted_Should_returnTrue()
+        public void Given_userInsertedCard_When_IsCardInserted_Then_shouldReturnTrue()
         {
             // Given
             var cardNumber = Fixture.Create<string>();
+            GetMock<ICardService>().Setup(x => x.CardExists(cardNumber)).Returns(true);
             ClassUnderTest.Insert(cardNumber);
 
             // When
-            var result = ClassUnderTest.IsCardInserted();
+            var result = ClassUnderTest.IsCardInserted;
 
             // Then
             Assert.IsTrue(result);
         }
 
         [Test]
-        public void Given_userInsertedCard_When_GetCurrentCardNumber_Should_returnSameNumber()
+        public void Given_userInsertedCard_When_GetCurrentCardNumber_Then_shouldReturnSameNumber()
         {
             // Given
             var cardNumber = Fixture.Create<string>();
+            GetMock<ICardService>().Setup(x => x.CardExists(cardNumber)).Returns(true);
             ClassUnderTest.Insert(cardNumber);
 
             // When
@@ -43,6 +47,17 @@ namespace ATM.Tests.Application.Authorization
 
             // Then
             Assert.AreEqual(cardNumber, result);
+        }
+
+        [Test]
+        public void Given_cardDoesNotExist_When_Insert_Then_shouldThrowException()
+        {
+            // Given
+            var cardNumber = Fixture.Create<string>();
+            GetMock<ICardService>().Setup(x => x.CardExists(cardNumber)).Returns(false);
+
+            // When // Then
+            Assert.Throws<CardDoesNotExistException>(() => ClassUnderTest.Insert(cardNumber));
         }
     }
 }

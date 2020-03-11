@@ -5,5 +5,7 @@
         void Withdraw(string cardNumber, decimal amount);
 
         decimal GetCardBalance(string cardNumber);
+
+        bool CardExists(string cardNumber);
     }
 }

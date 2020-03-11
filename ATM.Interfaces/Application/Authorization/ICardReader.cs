@@ -2,8 +2,10 @@
 {
     public interface ICardReader
     {
-        bool IsCardInserted();
+        bool IsCardInserted { get; }
 
         string CurrentCardNumber { get; }
+
+        void Insert(string cardNumber);
     }
 }

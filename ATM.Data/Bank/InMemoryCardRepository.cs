@@ -2,9 +2,11 @@
 using System.Linq;
 using ATM.Models;
 using ATM.Interfaces.Data.Bank;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ATM.Data.Bank
 {
+    [ExcludeFromCodeCoverage]
     public class InMemoryCardRepository : ICardRepository
     {
         private static List<Card> cards = new List<Card>
@@ -18,7 +20,16 @@ namespace ATM.Data.Bank
 
         public Card Get(string cardNumber)
         {
-            return cards.First(x => x.CardNumber == cardNumber);
+            var card = cards.First(x => x.CardNumber == cardNumber);
+
+            return card;
+        }
+
+        public bool CardExists(string cardNumber)
+        {
+            var cardExists = cards.Any(x => x.CardNumber == cardNumber);
+
+            return cardExists;
         }
     }
 }

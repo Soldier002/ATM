@@ -51,7 +51,12 @@ namespace ATM
 
         public void InsertCard(string cardNumber)
         {
-            throw new NotImplementedException();
+            if (_cardReader.IsCardInserted)
+            {
+                throw new CardAlreadyInsertedException();
+            }
+
+            _cardReader.Insert(cardNumber);
         }
 
         public void LoadMoney(Money money)
@@ -61,7 +66,7 @@ namespace ATM
 
         public IEnumerable<Fee> RetrieveChargedFees()
         {
-            if (!_cardReader.IsCardInserted())
+            if (!_cardReader.IsCardInserted)
             {
                 throw new CardNotInsertedException();
             }
@@ -78,7 +83,7 @@ namespace ATM
 
         public Money WithdrawMoney(int amount)
         {
-            if (!_cardReader.IsCardInserted())
+            if (!_cardReader.IsCardInserted)
             {
                 throw new CardNotInsertedException();
             }

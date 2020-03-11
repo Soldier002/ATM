@@ -42,5 +42,12 @@ namespace ATM.Application.MoneyOperations.Bank
 
             return card.Balance;
         }
+
+        public bool CardExists(string cardNumber)
+        {
+            var cardExists = _cardRepository.CardExists(cardNumber);
+
+            return cardExists;
+        }
     }
 }

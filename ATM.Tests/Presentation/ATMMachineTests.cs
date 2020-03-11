@@ -20,7 +20,7 @@ namespace ATM.Tests.Presentation
         {
             // Given
             var amount = Fixture.Create<int>();
-            GetMock<ICardReader>().Setup(x => x.IsCardInserted()).Returns(false);
+            GetMock<ICardReader>().Setup(x => x.IsCardInserted).Returns(false);
 
             // When // Then
             Assert.Throws<CardNotInsertedException>(() => ClassUnderTest.WithdrawMoney(amount));
@@ -35,17 +35,17 @@ namespace ATM.Tests.Presentation
             var withdrawnMoney = Fixture.Create<Money>();
             var cardNumber = Fixture.Create<string>();
 
-            GetMock<ICardReader>().Setup(x => x.IsCardInserted()).Returns(true);
+            GetMock<ICardReader>().Setup(x => x.IsCardInserted).Returns(true);
             GetMock<IThisATMachineState>().Setup(x => x.AvailableMoney).Returns(availableMoney);
             GetMock<IPaperNoteDispenseAlgorithm>().Setup(x => x.Dispense(amountToDispense, availableMoney)).Returns(withdrawnMoney);
             GetMock<ICardReader>().Setup(x => x.CurrentCardNumber).Returns(cardNumber);
-            var cardServiceMock = GetMock<ICardService>();
+            var mockCardService = GetMock<ICardService>();
 
             // When 
             var result = ClassUnderTest.WithdrawMoney(amountToDispense);
 
             // Then
-            cardServiceMock.Verify(x => x.Withdraw(cardNumber, amountToDispense), Times.Once);
+            mockCardService.Verify(x => x.Withdraw(cardNumber, amountToDispense), Times.Once);
             Assert.AreEqual(withdrawnMoney, result);
         }
 
@@ -53,7 +53,7 @@ namespace ATM.Tests.Presentation
         public void Given_cardNotInserted_When_RetrieveChargedFees_Then_shouldThrowException()
         {
             // Given
-            GetMock<ICardReader>().Setup(x => x.IsCardInserted()).Returns(false);
+            GetMock<ICardReader>().Setup(x => x.IsCardInserted).Returns(false);
 
             // When // Then
             Assert.Throws<CardNotInsertedException>(() => ClassUnderTest.RetrieveChargedFees());
@@ -65,7 +65,7 @@ namespace ATM.Tests.Presentation
             // Given
             var cardNumber = Fixture.Create<string>();
             var fees = new List<Fee>();
-            GetMock<ICardReader>().Setup(x => x.IsCardInserted()).Returns(true);
+            GetMock<ICardReader>().Setup(x => x.IsCardInserted).Returns(true);
             GetMock<ICardReader>().Setup(x => x.CurrentCardNumber).Returns(cardNumber);
             GetMock<IFeeService>().Setup(x => x.GetAll(cardNumber)).Returns(fees);
 
@@ -74,6 +74,31 @@ namespace ATM.Tests.Presentation
 
             // Then
             Assert.AreEqual(fees, result);
+        }
+
+        [Test]
+        public void Given_cardAlreadyInserted_When_InsertCard_Then_shouldThrowException()
+        {
+            // Given
+            var cardNumber = Fixture.Create<string>();
+            GetMock<ICardReader>().Setup(x => x.IsCardInserted).Returns(true);
+
+            // When // Then
+            Assert.Throws<CardAlreadyInsertedException>(() => ClassUnderTest.InsertCard(cardNumber));
+        }
+
+        [Test]
+        public void Given_cardNumber_When_InsertCard_Then_shouldInsertCard()
+        {
+            // Given
+            var cardNumber = Fixture.Create<string>();
+            var mockCardReader = GetMock<ICardReader>();
+
+            // When
+            ClassUnderTest.InsertCard(cardNumber);
+
+            // Then
+            mockCardReader.Verify(x => x.Insert(cardNumber), Times.Once);
         }
     }
 }

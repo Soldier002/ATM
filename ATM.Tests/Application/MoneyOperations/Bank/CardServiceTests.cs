@@ -25,14 +25,14 @@ namespace ATM.Tests.Application.MoneyOperations.Bank
             GetMock<ICardRepository>().Setup(x => x.Get(cardNumber)).Returns(card);
             GetMock<IWithdrawalFeeCalculator>().Setup(x => x.Calculate(amount)).Returns(feeAmount);
             GetMock<IFeeFactory>().Setup(x => x.Create(cardNumber, feeAmount)).Returns(fee);
-            var feeRepositoryMock = GetMock<IFeeRepository>();
+            var mockFeeRepository = GetMock<IFeeRepository>();
 
             // When
             ClassUnderTest.Withdraw(cardNumber, amount);
 
             // Then
             Assert.AreEqual(card.Balance, 0);
-            feeRepositoryMock.Verify(x => x.Add(fee), Times.Once);
+            mockFeeRepository.Verify(x => x.Add(fee), Times.Once);
         }
 
         [Test]
@@ -62,6 +62,21 @@ namespace ATM.Tests.Application.MoneyOperations.Bank
 
             // Then
             Assert.AreEqual(card.Balance, result);
+        }
+
+        [Test]
+        public void Given_cardNumber_When_CardExists_Then_shouldCheckIfCardExists()
+        {
+            // Given
+            var cardNumber = Fixture.Create<string>();
+            var cardExists = Fixture.Create<bool>();
+            GetMock<ICardRepository>().Setup(x => x.CardExists(cardNumber)).Returns(cardExists);
+
+            // When
+            var result = ClassUnderTest.CardExists(cardNumber);
+
+            // Then
+            Assert.AreEqual(cardExists, result);
         }
     }
 }
