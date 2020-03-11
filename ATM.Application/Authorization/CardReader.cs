@@ -16,9 +16,9 @@ namespace ATM.Application.Authorization
             _thisATMachineState = thisATMachineState;
         }
 
-        public string CurrentCardNumber => _thisATMachineState.InsertedCardNumber;
+        public string InsertedCardNumber => _thisATMachineState.InsertedCardNumber;
 
-        public bool IsCardInserted => CurrentCardNumber != null;
+        public bool IsCardInserted => InsertedCardNumber != null;
 
         public void Insert(string cardNumber)
         {
@@ -28,6 +28,11 @@ namespace ATM.Application.Authorization
             }
 
             _thisATMachineState.InsertedCardNumber = cardNumber;
+        }
+
+        public void Remove()
+        {
+            _thisATMachineState.InsertedCardNumber = null;
         }
     }
 }

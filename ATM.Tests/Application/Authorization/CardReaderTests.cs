@@ -3,6 +3,7 @@ using ATM.Application.Authorization.Exceptions;
 using ATM.Interfaces.Application.MoneyOperations.Bank;
 using ATM.Interfaces.Data.ThisATMachine;
 using AutoFixture;
+using Moq;
 using NUnit.Framework;
 
 namespace ATM.Tests.Application.Authorization
@@ -46,7 +47,7 @@ namespace ATM.Tests.Application.Authorization
 
             // When
             ClassUnderTest.Insert(cardNumber);
-            var result = ClassUnderTest.CurrentCardNumber;
+            var result = ClassUnderTest.InsertedCardNumber;
 
             // Then
             Assert.AreEqual(cardNumber, result);
@@ -61,6 +62,19 @@ namespace ATM.Tests.Application.Authorization
 
             // When // Then
             Assert.Throws<CardDoesNotExistException>(() => ClassUnderTest.Insert(cardNumber));
+        }
+
+        [Test]
+        public void Given_cardIsInserted_When_Remove_Then_shouldRemoveCard()
+        {
+            // Given
+            var mockThisATMachineState = GetMock<IThisATMachineState>();
+
+            // When
+            ClassUnderTest.Remove();
+
+            // Then
+            mockThisATMachineState.VerifySet(x => x.InsertedCardNumber = null, Times.Once);
         }
     }
 }

@@ -4,8 +4,10 @@
     {
         bool IsCardInserted { get; }
 
-        string CurrentCardNumber { get; }
+        string InsertedCardNumber { get; }
 
         void Insert(string cardNumber);
+
+        void Remove();
     }
 }

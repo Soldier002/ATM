@@ -71,7 +71,7 @@ namespace ATM
                 throw new CardNotInsertedException();
             }
 
-            var fees = _feeService.GetAll(_cardReader.CurrentCardNumber);
+            var fees = _feeService.GetAll(_cardReader.InsertedCardNumber);
 
             return fees;
         }
@@ -83,7 +83,7 @@ namespace ATM
                 throw new CardNotInsertedException();
             }
 
-            
+            _cardReader.Remove();
         }
 
         public Money WithdrawMoney(int amount)
@@ -94,7 +94,7 @@ namespace ATM
             }
             
             var withdrawnMoney = _paperNoteDispenseAlgorithm.Dispense(amount, _thisATMachineState.AvailableMoney);
-            _cardService.Withdraw(_cardReader.CurrentCardNumber, amount);
+            _cardService.Withdraw(_cardReader.InsertedCardNumber, amount);
 
             return withdrawnMoney;
         }

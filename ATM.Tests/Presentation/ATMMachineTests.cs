@@ -38,7 +38,7 @@ namespace ATM.Tests.Presentation
             GetMock<ICardReader>().Setup(x => x.IsCardInserted).Returns(true);
             GetMock<IThisATMachineState>().Setup(x => x.AvailableMoney).Returns(availableMoney);
             GetMock<IPaperNoteDispenseAlgorithm>().Setup(x => x.Dispense(amountToDispense, availableMoney)).Returns(withdrawnMoney);
-            GetMock<ICardReader>().Setup(x => x.CurrentCardNumber).Returns(cardNumber);
+            GetMock<ICardReader>().Setup(x => x.InsertedCardNumber).Returns(cardNumber);
             var mockCardService = GetMock<ICardService>();
 
             // When 
@@ -66,7 +66,7 @@ namespace ATM.Tests.Presentation
             var cardNumber = Fixture.Create<string>();
             var fees = new List<Fee>();
             GetMock<ICardReader>().Setup(x => x.IsCardInserted).Returns(true);
-            GetMock<ICardReader>().Setup(x => x.CurrentCardNumber).Returns(cardNumber);
+            GetMock<ICardReader>().Setup(x => x.InsertedCardNumber).Returns(cardNumber);
             GetMock<IFeeService>().Setup(x => x.GetAll(cardNumber)).Returns(fees);
 
             // When
@@ -99,6 +99,30 @@ namespace ATM.Tests.Presentation
 
             // Then
             mockCardReader.Verify(x => x.Insert(cardNumber), Times.Once);
+        }
+
+        [Test]
+        public void Given_cardNotInserted_When_ReturnCard_Then_shouldThrowException()
+        {
+            // Given
+            GetMock<ICardReader>().Setup(x => x.IsCardInserted).Returns(false);
+
+            // When // Then
+            Assert.Throws<CardNotInsertedException>(() => ClassUnderTest.ReturnCard());
+        }
+
+        [Test]
+        public void Given_cardInserted_When_ReturnCard_Then_shouldReturnCard()
+        {
+            // Given
+            GetMock<ICardReader>().Setup(x => x.IsCardInserted).Returns(true);
+            var cardReaderMock = GetMock<ICardReader>();
+
+            // When
+            ClassUnderTest.ReturnCard();
+
+            // Then
+            cardReaderMock.Verify(x => x.Remove(), Times.Once);
         }
     }
 }
