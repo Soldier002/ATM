@@ -2,7 +2,7 @@
 using ATM.Models;
 using NUnit.Framework;
 
-namespace ATM.Tests.Application
+namespace ATM.Tests.Application.Authorization
 {
     [TestFixture]
     public class CardReaderTests : AutoMockedTests<CardReader>
