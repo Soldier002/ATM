@@ -21,7 +21,7 @@ namespace ATM.Tests.Presentation
         }
 
         [Test]
-        public void Given_cardInserted_When_WithdrawMoney_Then_shouldThrowException()
+        public void Given_cardInserted_When_WithdrawMoney_Then_shouldProceed()
         {
             // Given 
             var mockCardReader = Fixture.Freeze<Mock<ICardReader>>();

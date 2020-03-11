@@ -1,6 +1,7 @@
 ﻿using ATM.Application.Exceptions;
 using ATM.Interfaces.Application.Authorization;
 using ATM.Interfaces.Application.MoneyOperations;
+using ATM.Interfaces.Data;
 using ATM.Models;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,13 @@ namespace ATM
     {
         private readonly ICardReader _cardReader;
         private readonly IPaperNoteDispenseAlgorithm _paperNoteDispenseAlgorithm;
+        private readonly IThisATMachineState _thisATMachineState;
 
-        public ATMachine(ICardReader cardReader, IPaperNoteDispenseAlgorithm paperNoteDispenseAlgorithm)
+        public ATMachine(ICardReader cardReader, IPaperNoteDispenseAlgorithm paperNoteDispenseAlgorithm, IThisATMachineState thisATMachineState)
         {
             _cardReader = cardReader;
             _paperNoteDispenseAlgorithm = paperNoteDispenseAlgorithm;
+            _thisATMachineState = thisATMachineState;
         }
 
         public string Manufacturer
@@ -65,8 +68,10 @@ namespace ATM
             {
                 throw new CardNotInsertedException();
             }
+            
+            var withdrawnMoney = _paperNoteDispenseAlgorithm.Dispense(amount, _thisATMachineState.AvailableMoney);
 
-            return new Money();
+            return withdrawnMoney;
         }
     }
 }

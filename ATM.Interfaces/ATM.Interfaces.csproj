@@ -44,6 +44,7 @@
     <Compile Include="Application\MoneyOperations\IPaperNoteDispenseAlgorithm.cs" />
     <Compile Include="Application\MoneyOperations\IPaperNoteFactory.cs" />
     <Compile Include="Configuration\IConfiguration.cs" />
+    <Compile Include="Data\IThisATMachineState.cs" />
     <Compile Include="Presentation\IATMachine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
