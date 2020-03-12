@@ -4,7 +4,6 @@ using ATM.Interfaces.Application.Fees;
 using ATM.Interfaces.Application.MoneyOperations.Bank;
 using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
 using ATM.Interfaces.Maintenance;
-using ATM.Models;
 using ATM.Models.Bank;
 using ATM.Models.Finances;
 using AutoFixture;

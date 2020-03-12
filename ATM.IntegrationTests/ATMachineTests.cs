@@ -7,7 +7,6 @@ using ATM.Interfaces.Data.ThisATMachine;
 using ATM.Data.ThisATMachine;
 using ATM.Interfaces.Configuration;
 using ATM.Application.Configuration;
-using ATM.Models;
 using System.Linq;
 using ATM.Application.Authorization.Exceptions;
 using ATM.Models.Finances;

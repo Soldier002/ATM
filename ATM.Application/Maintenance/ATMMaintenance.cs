@@ -1,7 +1,6 @@
 ﻿using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
 using ATM.Interfaces.Data.ThisATMachine;
 using ATM.Interfaces.Maintenance;
-using ATM.Models;
 using ATM.Models.Finances;
 
 namespace ATM.Application.Maintenance

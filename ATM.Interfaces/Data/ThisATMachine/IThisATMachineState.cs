@@ -1,5 +1,4 @@
-﻿using ATM.Models;
-using ATM.Models.Finances;
+﻿using ATM.Models.Finances;
 
 namespace ATM.Interfaces.Data.ThisATMachine
 {

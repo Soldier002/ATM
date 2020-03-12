@@ -1,6 +1,5 @@
 ﻿using ATM.Interfaces.Application.Fees;
 using System.Collections.Generic;
-using ATM.Models;
 using ATM.Interfaces.Data.Bank;
 using ATM.Models.Bank;
 

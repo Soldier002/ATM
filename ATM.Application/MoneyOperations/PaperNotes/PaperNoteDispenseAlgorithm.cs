@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ATM.Models;
 using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
 using ATM.Application.MoneyOperations.Exceptions;
 using ATM.Interfaces.Data.ThisATMachine;
@@ -27,14 +26,19 @@ namespace ATM.Application.MoneyOperations.PaperNotes
             }
 
             var orderedPaperNoteAmounts = moneyInAtm.Notes.OrderByDescending(x => x.Key.FaceValue).ToList();
-
             RunThroughVariations(new int[orderedPaperNoteAmounts.Count], 0, orderedPaperNoteAmounts, amountToDispense);
-
             if (resultVariation == null)
             {
                 throw new NecessaryPaperNotesNotAvailableException();
             }
 
+            var money = MapVariationToMoney(resultVariation, orderedPaperNoteAmounts);
+
+            return money;
+        }
+
+        private Money MapVariationToMoney(int[] variation, List<KeyValuePair<PaperNote, int>> orderedPaperNoteAmounts)
+        {
             var money = new Money
             {
                 Notes = new Dictionary<PaperNote, int>()
@@ -58,7 +62,7 @@ namespace ATM.Application.MoneyOperations.PaperNotes
                 return;
             }
 
-            var sum = GetCurrentSum(variation, orderedPaperNoteAmounts);
+            var sum = GetSumForVariation(variation, orderedPaperNoteAmounts);
             if (sum < amountToDispense)
             {
                 for (var i = position; i < orderedPaperNoteAmounts.Count; i++)
@@ -77,7 +81,7 @@ namespace ATM.Application.MoneyOperations.PaperNotes
             }
         }
 
-        private int GetCurrentSum(int[] variation, List<KeyValuePair<PaperNote, int>> orderedPaperNoteAmounts)
+        private int GetSumForVariation(int[] variation, List<KeyValuePair<PaperNote, int>> orderedPaperNoteAmounts)
         {
             var sum = 0;
             for (var i = 0; i < variation.Length; i++)

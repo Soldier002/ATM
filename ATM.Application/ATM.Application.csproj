@@ -55,6 +55,7 @@
     <Compile Include="MoneyOperations\Exceptions\NotEnoughMoneyInAtmException.cs" />
     <Compile Include="MoneyOperations\Exceptions\PaperNoteFaceValueNotAvailableException.cs" />
     <Compile Include="MoneyOperations\Bank\CardService.cs" />
+    <Compile Include="MoneyOperations\Money\PaperNoteAmountsToMoneyMapper.cs" />
     <Compile Include="MoneyOperations\PaperNotes\PaperNoteDispenseAlgorithm.cs" />
     <Compile Include="MoneyOperations\PaperNotes\PaperNoteValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
