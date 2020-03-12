@@ -30,21 +30,9 @@ namespace ATM
             _atmMaintenance = atmMaintenance;
         }
 
-        public string Manufacturer
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public string Manufacturer => "Elvijs";
 
-        public string SerialNumber
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public string SerialNumber => "1";
 
         public decimal GetCardBalance()
         {
