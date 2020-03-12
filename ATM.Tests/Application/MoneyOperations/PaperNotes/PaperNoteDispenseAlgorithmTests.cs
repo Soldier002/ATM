@@ -18,7 +18,6 @@ namespace ATM.Tests.Application.MoneyOperations.PaperNotes
             var twenty = new PaperNote(20);
             var money = new Money
             {
-                Amount = 110,
                 Notes = new Dictionary<PaperNote, int>
                 {
                     { fifty, 1 },
@@ -46,7 +45,6 @@ namespace ATM.Tests.Application.MoneyOperations.PaperNotes
             var ten = new PaperNote(10);
             var money = new Money
             {
-                Amount = 510,
                 Notes = new Dictionary<PaperNote, int>
                 {
                     { fifty, 5 },
@@ -71,7 +69,13 @@ namespace ATM.Tests.Application.MoneyOperations.PaperNotes
         public void Given_notEnoughMoneyInAtm_When_Dispense_Then_shouldThrowException()
         {
             // Given
-            var moneyInAtm = new Money { Amount = 10 };
+            var moneyInAtm = new Money
+            {
+                Notes = new Dictionary<PaperNote, int>
+                {
+                    { new PaperNote(5), 1 }
+                }
+            };
             var amountToDispense = 100;
             GetMock<IThisATMachineState>().Setup(x => x.AvailableMoney).Returns(moneyInAtm);
 
@@ -85,7 +89,6 @@ namespace ATM.Tests.Application.MoneyOperations.PaperNotes
             // Given
             var moneyInAtm = new Money
             {
-                Amount = 100,
                 Notes = new Dictionary<PaperNote, int>
                 {
                     { new PaperNote(50), 1 },

@@ -1,5 +1,6 @@
 ﻿using ATM.Interfaces.Data.ThisATMachine;
 using ATM.Models;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
 namespace ATM.Data.ThisATMachine
@@ -9,7 +10,7 @@ namespace ATM.Data.ThisATMachine
     {
         private readonly static ATMStatusModel _atmStatus = new ATMStatusModel
         {
-            AvailableMoney = new Money(),
+            AvailableMoney = new Money { Notes = new Dictionary<PaperNote, int>() },
             OutOfService = false,
             AlarmEnabled = true
         };

@@ -36,7 +36,6 @@ namespace ATM.Application.MoneyOperations.PaperNotes
 
             var money = new Money
             {
-                Amount = amountToDispense,
                 Notes = new Dictionary<PaperNote, int>()
             };
 
