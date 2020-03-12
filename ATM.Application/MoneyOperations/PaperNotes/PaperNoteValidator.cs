@@ -1,6 +1,6 @@
 ﻿using ATM.Application.MoneyOperations.Exceptions;
+using ATM.Interfaces.Application.Configuration;
 using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
-using ATM.Interfaces.Configuration;
 using ATM.Models.Finances;
 using System.Collections.Generic;
 using System.Linq;

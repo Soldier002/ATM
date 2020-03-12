@@ -1,6 +1,6 @@
 ﻿using ATM.Application.MoneyOperations.Exceptions;
 using ATM.Application.MoneyOperations.PaperNotes;
-using ATM.Interfaces.Configuration;
+using ATM.Interfaces.Application.Configuration;
 using ATM.Models.Finances;
 using NUnit.Framework;
 using System.Collections.Generic;

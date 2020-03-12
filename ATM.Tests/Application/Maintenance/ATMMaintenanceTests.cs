@@ -2,11 +2,11 @@
 using ATM.Application.Maintenance;
 using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
 using ATM.Interfaces.Data.ThisATMachine;
-using ATM.Interfaces.Maintenance;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 using ATM.Models.Finances;
+using ATM.Interfaces.Application.Maintenance;
 
 namespace ATM.Tests.Application.Maintenance
 {

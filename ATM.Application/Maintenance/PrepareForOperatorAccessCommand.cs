@@ -1,5 +1,5 @@
-﻿using ATM.Interfaces.Data.ThisATMachine;
-using ATM.Interfaces.Maintenance;
+﻿using ATM.Interfaces.Application.Maintenance;
+using ATM.Interfaces.Data.ThisATMachine;
 
 namespace ATM.Application.Maintenance
 {

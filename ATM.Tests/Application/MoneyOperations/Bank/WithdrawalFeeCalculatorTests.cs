@@ -1,5 +1,5 @@
 ﻿using ATM.Application.MoneyOperations.Bank;
-using ATM.Interfaces.Configuration;
+using ATM.Interfaces.Application.Configuration;
 using NUnit.Framework;
 
 namespace ATM.Tests.Application.MoneyOperations.Bank

@@ -1,4 +1,4 @@
-﻿namespace ATM.Interfaces.Maintenance
+﻿namespace ATM.Interfaces.Application.Maintenance
 {
     public interface IPrepareForOperatorAccessCommand
     {

@@ -1,4 +1,4 @@
-﻿namespace ATM.Interfaces.Configuration
+﻿namespace ATM.Interfaces.Application.Configuration
 {
     public interface IConfiguration
     {

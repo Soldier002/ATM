@@ -1,5 +1,5 @@
-﻿using ATM.Interfaces.Application.MoneyOperations.Bank;
-using ATM.Interfaces.Configuration;
+﻿using ATM.Interfaces.Application.Configuration;
+using ATM.Interfaces.Application.MoneyOperations.Bank;
 
 namespace ATM.Application.MoneyOperations.Bank
 {

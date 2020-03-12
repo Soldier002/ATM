@@ -1,6 +1,6 @@
 ﻿using ATM.Models.Finances;
 
-namespace ATM.Interfaces.Maintenance
+namespace ATM.Interfaces.Application.Maintenance
 {
     public interface IATMMaintenance
     {

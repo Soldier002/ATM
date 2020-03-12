@@ -5,11 +5,11 @@ using ATM.Interfaces.Data.Bank;
 using ATM.Data.Bank;
 using ATM.Interfaces.Data.ThisATMachine;
 using ATM.Data.ThisATMachine;
-using ATM.Interfaces.Configuration;
 using ATM.Application.Configuration;
 using System.Linq;
 using ATM.Application.Authorization.Exceptions;
 using ATM.Models.Finances;
+using ATM.Interfaces.Application.Configuration;
 
 namespace ATM.IntegrationTests
 {
