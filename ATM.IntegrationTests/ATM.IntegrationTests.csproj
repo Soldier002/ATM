@@ -46,7 +46,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestClass.cs" />
+    <Compile Include="ATMachineTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
