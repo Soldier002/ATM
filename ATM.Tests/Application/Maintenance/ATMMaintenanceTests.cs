@@ -7,6 +7,7 @@ using ATM.Models;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
+using ATM.Models.Finances;
 
 namespace ATM.Tests.Application.Maintenance
 {

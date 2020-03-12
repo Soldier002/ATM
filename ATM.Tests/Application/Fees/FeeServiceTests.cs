@@ -1,6 +1,7 @@
 ﻿using ATM.Application.Fees;
 using ATM.Interfaces.Data.Bank;
 using ATM.Models;
+using ATM.Models.Bank;
 using AutoFixture;
 using NUnit.Framework;
 using System.Collections.Generic;

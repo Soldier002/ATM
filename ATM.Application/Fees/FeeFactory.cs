@@ -1,6 +1,7 @@
 ﻿using ATM.Interfaces.Application.Fees;
 using ATM.Models;
 using ATM.Interfaces.Application.Utility;
+using ATM.Models.Bank;
 
 namespace ATM.Application.Fees
 {

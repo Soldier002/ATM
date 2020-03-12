@@ -10,6 +10,7 @@ using ATM.Application.Configuration;
 using ATM.Models;
 using System.Linq;
 using ATM.Application.Authorization.Exceptions;
+using ATM.Models.Finances;
 
 namespace ATM.IntegrationTests
 {

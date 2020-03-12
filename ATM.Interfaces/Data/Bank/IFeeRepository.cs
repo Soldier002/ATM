@@ -1,4 +1,5 @@
 ﻿using ATM.Models;
+using ATM.Models.Bank;
 using System.Collections.Generic;
 
 namespace ATM.Interfaces.Data.Bank

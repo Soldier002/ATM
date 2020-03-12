@@ -1,4 +1,5 @@
 ﻿using ATM.Models;
+using ATM.Models.Finances;
 using NUnit.Framework;
 
 namespace ATM.Tests.Models

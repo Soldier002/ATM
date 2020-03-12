@@ -1,4 +1,5 @@
 ﻿using ATM.Models;
+using ATM.Models.Finances;
 
 namespace ATM.Interfaces.Maintenance
 {

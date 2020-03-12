@@ -1,4 +1,6 @@
-﻿namespace ATM.Models
+﻿using ATM.Models.Finances;
+
+namespace ATM.Models.ATM
 {
     public class ATMStatusModel
     {

@@ -2,6 +2,7 @@
 using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
 using ATM.Interfaces.Configuration;
 using ATM.Models;
+using ATM.Models.Finances;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ATM.Models;
 using ATM.Interfaces.Data.Bank;
+using ATM.Models.Bank;
 
 namespace ATM.Application.Fees
 {

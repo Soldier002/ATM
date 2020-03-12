@@ -3,6 +3,7 @@ using System.Linq;
 using ATM.Models;
 using ATM.Interfaces.Data.Bank;
 using System.Diagnostics.CodeAnalysis;
+using ATM.Models.Bank;
 
 namespace ATM.Data.Bank
 {

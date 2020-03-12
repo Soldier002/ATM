@@ -4,6 +4,7 @@ using ATM.Models;
 using ATM.Interfaces.Application.MoneyOperations.PaperNotes;
 using ATM.Application.MoneyOperations.Exceptions;
 using ATM.Interfaces.Data.ThisATMachine;
+using ATM.Models.Finances;
 
 namespace ATM.Application.MoneyOperations.PaperNotes
 {

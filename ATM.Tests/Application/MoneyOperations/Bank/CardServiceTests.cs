@@ -4,6 +4,7 @@ using ATM.Interfaces.Application.Fees;
 using ATM.Interfaces.Application.MoneyOperations.Bank;
 using ATM.Interfaces.Data.Bank;
 using ATM.Models;
+using ATM.Models.Bank;
 using AutoFixture;
 using Moq;
 using NUnit.Framework;

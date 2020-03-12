@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ATM.Models
+namespace ATM.Models.Finances
 {
     public struct Money
     {

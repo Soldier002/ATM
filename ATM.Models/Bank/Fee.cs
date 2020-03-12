@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ATM.Models
+namespace ATM.Models.Bank
 {
     public struct Fee
     {

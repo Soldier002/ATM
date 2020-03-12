@@ -1,5 +1,7 @@
 ﻿using ATM.Interfaces.Data.ThisATMachine;
 using ATM.Models;
+using ATM.Models.ATM;
+using ATM.Models.Finances;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
