@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Authorization\CardReaderTests.cs" />
+    <Compile Include="Application\Authorization\Validators\CardNumberValidatorTests.cs" />
     <Compile Include="Application\Fees\FeeFactoryTests.cs" />
     <Compile Include="Application\Fees\FeeServiceTests.cs" />
     <Compile Include="Application\Maintenance\ATMMaintenanceTests.cs" />

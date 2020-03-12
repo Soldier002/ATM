@@ -46,6 +46,8 @@
     <Compile Include="Authorization\CardReader.cs" />
     <Compile Include="Authorization\Exceptions\CardAlreadyInsertedException.cs" />
     <Compile Include="Authorization\Exceptions\CardDoesNotExistException.cs" />
+    <Compile Include="Authorization\Exceptions\InvalidCardNumberException.cs" />
+    <Compile Include="Authorization\Validators\CardNumberValidator.cs" />
     <Compile Include="Configuration\InMemoryConfiguration.cs" />
     <Compile Include="Authorization\Exceptions\CardNotInsertedException.cs" />
     <Compile Include="Fees\FeeFactory.cs" />
